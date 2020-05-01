@@ -1,7 +1,6 @@
-# node-express-babel-boilerplate
+# Ecommerce Node Js Application
 
-This application is a kick-starting with simple node js application (**Server Side**) 
-that allows you to use `import` statement and other es6 experimental features.
+This is an ecommerce application backend built with node js with fully organized structure.
 
 
 # Installation
@@ -13,7 +12,6 @@ Just clone the repository then run one of the following:
 OR 
 
 `npm install`
-
 
 # Starting the server 
 
