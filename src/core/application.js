@@ -1,6 +1,7 @@
 import env from './env';
 import express from 'express';
 import router from './router';
+import fileUpload from 'express-fileupload';
 import bodyParser from 'body-parser';
 import ServiceProvidersContainer from './service-providers-container';
 
@@ -30,6 +31,11 @@ export default class Application {
         this.express.use(bodyParser.urlencoded({
             extended: true,
         })); 
+
+        this.express.use(fileUpload({
+            useTempFiles: true,
+            tempFileDir: __dirname + '/tmp',
+        }));
     }
 
     /**

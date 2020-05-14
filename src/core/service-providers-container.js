@@ -1,4 +1,3 @@
-import router from './router';
 import providers from '../config/providers';
 
 export default class ServiceProvidersContainer {
@@ -20,11 +19,7 @@ export default class ServiceProvidersContainer {
      */
     registerRoutes() {
         for (let provider of this.serviceProviders) {
-            if (! provider.routes) continue;
-
-            for (let route of provider.routes) {
-                route(router);
-            }
+            provider.mapRouting();
         }
     }
 }
