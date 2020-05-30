@@ -33,12 +33,12 @@ for (let line of lines) {
     key = key.replace(/^\s|\s$/g, '');
 
     if (Is.numeric(value)) {        
-        value = Number(value)
+        value = Number(value);
     }
 
     key = key.toUpperCase();
 
-    process.env[key] = value;
+    process.env[key] = value; // all data are stored as strings 
 
     data[key] = value;
 }

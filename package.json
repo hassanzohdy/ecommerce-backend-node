@@ -5,7 +5,8 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "serve": "babel-watch src/index.js",
-    "postinstall": "link-module-alias"
+    "postinstall": "link-module-alias",
+    "video": "code . --disable-gpu && yarn serve"
   },
   "_moduleAliases": {
     "core": "src/core",

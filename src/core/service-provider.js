@@ -8,6 +8,7 @@ export default class ServiceProvider {
      */
     routes = null;
 
+    
     /**
      * Map routing for the current service provider
      */

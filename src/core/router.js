@@ -14,18 +14,15 @@ class Router {
      * 
      * @param   {string} requestMethod
      * @param   {string} route
-     * @param   {array} action => [controller, controllerMethod]
+     * @param   {callback} callback 
      * @returns {Router}
      */
-    _handleRequest(requestMethod, route, [controller, controllerMethod]) {       
+    _handleRequest(requestMethod, route, callback) {       
         this.expressApp[requestMethod](route, function (request, response) {
             // create new controller object
-            let controllerObject = new controller,
-                // get the method pointer
-                methodFunction = controllerObject[controllerMethod];
-
+            
             // call the method for the current route
-            let output = methodFunction(request, response);
+            let output = callback(request, response);
 
             // send response if the output is not empty
             if (output) {
