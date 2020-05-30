@@ -17,10 +17,10 @@ class Router {
      * @param   {callback} callback 
      * @returns {Router}
      */
-    _handleRequest(requestMethod, route, callback) {       
+    _handleRequest(requestMethod, route, callback) {
         this.expressApp[requestMethod](route, function (request, response) {
             // create new controller object
-            
+
             // call the method for the current route
             let output = callback(request, response);
 
@@ -28,7 +28,7 @@ class Router {
             if (output) {
                 response.send(output);
             }
-        });      
+        });
 
         return this;
     }
@@ -109,6 +109,30 @@ class Router {
     options(route, action) {
         return this._handleRequest('options', route, action);
     }
- }
+
+    /**
+     * Add new restful API resource
+     * This will create the following routes
+     * GET /resource >> List all records
+     * GET /resource/:id >> Get one record
+     * POST /resource >> Create new record
+     * PUT /resource/:id >> Update Existing record
+     * DELETE /resource/:id >> Delete record
+     * 
+     * @param   {string} resource
+     * @param   {handler} resourceHandler
+     * @returns {Router} 
+     */
+    resource(resource, resourceHandler) {
+        const { list, show, create, update, remove } = resourceHandler;
+
+        // /users
+        return this._handleRequest('get', resource, list)
+                    ._handleRequest('get', resource + '/:id', show)
+                    ._handleRequest('post', resource, create)
+                    ._handleRequest('put', resource + '/:id', update)
+                    ._handleRequest('delete', resource + '/:id', remove);
+    }
+}
 
 export default new Router;
