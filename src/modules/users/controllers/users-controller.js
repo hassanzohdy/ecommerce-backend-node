@@ -1,6 +1,10 @@
+import users from 'modules/users/models/user';
+
 // GET /users
-function list(request, response) {
-    response.send('Listing Users...');
+async function list(request, response) {    
+    response.send({
+        records: await users.get(),
+    });
 }
 
 // GET /users/:id
@@ -22,10 +26,12 @@ function update(request, response) {
 function remove(request, response) {
 }
 
-export default {
+const UsersController = {
     list,
     show,
     create,
     update,
     remove,
 };
+
+export default UsersController;

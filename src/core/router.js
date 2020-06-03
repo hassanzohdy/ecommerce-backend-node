@@ -18,11 +18,11 @@ class Router {
      * @returns {Router}
      */
     _handleRequest(requestMethod, route, callback) {
-        this.expressApp[requestMethod](route, function (request, response) {
+        this.expressApp[requestMethod](route, async function (request, response) {
             // create new controller object
 
             // call the method for the current route
-            let output = callback(request, response);
+            let output = await callback(request, response);
 
             // send response if the output is not empty
             if (output) {
