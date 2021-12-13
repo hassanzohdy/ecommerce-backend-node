@@ -48,7 +48,7 @@ export default class Input {
         this.value = value;
 
         return this;
-    }
+    }   
 
     /**
      * Set name
@@ -92,6 +92,19 @@ export default class Input {
                 return Is.email(value);
             },
         };
+        return this;
+    }
+
+    unique(model) {
+        this.rules.unique = {
+            errorMessage: 'Field Already exists',
+            execute: async (value) => {
+                return ! Boolean(await model.first({
+                    [this.name]: value
+                }));
+            }
+        }
+
         return this;
     }
 

@@ -8,7 +8,7 @@ async function list(request, response) {
 }
 
 // GET /users/:id
-function show(request, response) {
+export function show(request, response) {
     response.send(request.params.id);
 }
 

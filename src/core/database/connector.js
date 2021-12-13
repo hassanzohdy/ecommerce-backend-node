@@ -19,7 +19,7 @@ const client = new MongoClient(url, {
 });
 
 function connect() {
-    new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         client.connect((error) => {
             if (error) {
                 reject(error)
@@ -30,6 +30,7 @@ function connect() {
     })
 }
 
+// sync code
 (async function () {
     await connect();
 })();

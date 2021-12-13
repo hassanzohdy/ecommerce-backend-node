@@ -29,6 +29,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.7-alpha.3",
     "mongodb": "^3.5.8",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "sync": "^0.2.5"
   }
 }
